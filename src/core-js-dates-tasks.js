@@ -261,7 +261,8 @@ function getNextFridayThe13th(date) {
     currentDate.setDate(13);
   }
 
-  while (true) {
+  const maxIterations = 1000;
+  for (let i = 0; i < maxIterations; i += 1) {
     if (currentDate.getDay() === 5) {
       return new Date(currentDate.getTime());
     }
@@ -269,6 +270,8 @@ function getNextFridayThe13th(date) {
     currentDate.setMonth(currentDate.getMonth() + 1);
     currentDate.setDate(13);
   }
+
+  throw new Error('Friday the 13th not exist');
 }
 
 /**
